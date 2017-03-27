@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "dependencies": {
+    "execa": "^0.6.3",
+    "get-stdin": "^5.0.1",
+    "svgo": "^0.7.2"
+  }
+}
