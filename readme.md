@@ -4,6 +4,9 @@
 
 You can install via with [Package Control](https://packagecontrol.io/) and restart Sublime.
 
+- **Install Package**: Search with `SVGO`.
+- **Add Repository**: Put URL `https://github.com/1000ch/Sublime-svgo`.
+
 ## Usage
 
 In a SVG file, open the Command Palette (<kbd>Cmd</kbd> <kbd>Shift</kbd> <kbd>P</kbd>) and choose **Minify SVG** or **Prettify SVG**.
