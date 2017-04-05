@@ -1,30 +1,30 @@
 'use strict';
 
-const path = require('path');
-const execa = require('execa');
 const getStdin = require('get-stdin');
-
-const unix = path.normalize(path.join(__dirname, 'node_modules', '.bin', 'svgo'));
-const win = path.normalize(path.join(__dirname, 'node_modules', '.bin', 'svgo.cmd'));
-const SVGO_BIN = require('os').type() === 'Windows_NT' ? win : unix;
+const SVGO = require('svgo');
 
 getStdin()
-  .then(data => svgo(data))
+  .then(data => minify(data))
   .then(data => process.stdout.write(data));
 
-function svgo(data) {
+function minify(data) {
   const options = JSON.parse(process.argv[2]);
-  const args = [
-    '--string', data,
-    '--indent', options.indent,
-    '--output', '-'
-  ];
+  const svg = Buffer.isBuffer(data) ? data.toString() : data;
 
-  if (options.pretty) {
-    args.push('--pretty');
-  }
+  const svgo = new SVGO({
+    js2svg: {
+      pretty: options.pretty,
+      indent: options.indent
+    }
+  });
 
-  return execa.stdout(SVGO_BIN, args, {
-    encoding: null
+  return new Promise((resolve, reject) => {
+    svgo.optimize(svg, result => {
+      if (result.error) {
+        reject(result.error);
+      } else {
+        resolve(result.data);
+      }
+    });
   });
 }
