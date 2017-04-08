@@ -1,5 +1,7 @@
 # Sublime-svgo
 
+A plugin for [Sublime Text](https://www.sublimetext.com/) providing an interface to [SVGO](https://github.com/svg/svgo).
+
 ## Install
 
 You can install via with [Package Control](https://packagecontrol.io/) and restart Sublime.
