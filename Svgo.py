@@ -9,6 +9,9 @@ try:
 except:
     from .node_bridge import node_bridge
 
+sublime.Region.totuple = lambda self: (self.a, self.b)
+sublime.Region.__iter__ = lambda self: self.totuple().__iter__()
+
 BIN_PATH = join(sublime.packages_path(), dirname(realpath(__file__)), 'svgo.js')
 
 def get_setting(view, key):
