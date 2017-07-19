@@ -1,5 +1,9 @@
 {
+  "version": "1.0.3",
   "private": true,
+  "scripts": {
+    "postversion": "git push && git push --tags"
+  },
   "dependencies": {
     "get-stdin": "^5.0.1",
     "svgo": "^0.7.2"
