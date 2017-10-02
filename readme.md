@@ -1,4 +1,4 @@
-# Sublime-svgo
+# Sublime-svgo [![Dependency Status](https://david-dm.org/1000ch/Sublime-svgo.svg)](https://david-dm.org/1000ch/Sublime-svgo)
 
 A plugin for [Sublime Text](https://www.sublimetext.com/) providing an interface to [SVGO](https://github.com/svg/svgo).
 
