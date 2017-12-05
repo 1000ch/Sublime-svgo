@@ -18,13 +18,5 @@ function minify(data) {
     }
   });
 
-  return new Promise((resolve, reject) => {
-    svgo.optimize(svg, result => {
-      if (result.error) {
-        reject(result.error);
-      } else {
-        resolve(result.data);
-      }
-    });
-  });
+  return svgo.optimize(svg).then(r => Buffer.from(r.data));
 }
