@@ -30,4 +30,4 @@ npm test
 
 ([The MIT License](LICENSE))
 
-Copyright 2014 Cameron Lakenen
+Copyright 2017 Cameron Lakenen
