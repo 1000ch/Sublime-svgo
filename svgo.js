@@ -15,7 +15,12 @@ function minify(data) {
     js2svg: {
       pretty: options.pretty,
       indent: options.indent
-    }
+    },
+    plugins: [{
+      removeTitle: false
+    }, {
+      removeViewBox: false
+    }]
   });
 
   return svgo.optimize(svg).then(r => Buffer.from(r.data));
