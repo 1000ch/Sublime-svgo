@@ -47,7 +47,8 @@ class SvgoMinifyCommand(sublime_plugin.TextCommand):
     def minify(self, data):
         try:
             return node_bridge(data, BIN_PATH, [json.dumps({
-                'indent': get_setting(self.view, 'indent')
+                'indent': get_setting(self.view, 'indent'),
+                'plugins': get_setting(self.view, 'plugins')
             })])
         except Exception as e:
             sublime.error_message('svgo\n%s' % e)
@@ -87,7 +88,8 @@ class SvgoPrettifyCommand(sublime_plugin.TextCommand):
         try:
             return node_bridge(data, BIN_PATH, [json.dumps({
                 'pretty': True,
-                'indent': get_setting(self.view, 'indent')
+                'indent': get_setting(self.view, 'indent'),
+                'plugins': get_setting(self.view, 'plugins')
             })])
         except Exception as e:
             sublime.error_message('svgo\n%s' % e)
