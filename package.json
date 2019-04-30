@@ -5,7 +5,7 @@
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
-    "get-stdin": "^6.0.0",
+    "get-stdin": "^7.0.0",
     "svgo": "^1.2.2"
   }
 }
