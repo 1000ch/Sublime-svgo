@@ -6,6 +6,6 @@
   },
   "dependencies": {
     "get-stdin": "^6.0.0",
-    "svgo": "^1.1.1"
+    "svgo": "^1.2.2"
   }
 }
