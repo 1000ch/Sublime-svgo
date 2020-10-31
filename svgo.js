@@ -18,7 +18,7 @@ function minify(data) {
   };
 
   // Add user plugins
-  for (let plugin in options.plugins) {
+  for (const plugin of options.plugins) {
     plugins.push({
       // TODO: support old node version?
       [plugin]: options.plugins[plugin],
@@ -26,7 +26,7 @@ function minify(data) {
   }
 
   // Set default options
-  for (let option in defaultOptions) {
+  for (const option of defaultOptions) {
     if (!plugins.find(plugin => option in plugin)) {
       plugins.push({
         // TODO: support old node version?
