@@ -13,9 +13,8 @@ You can install via with [Package Control](https://packagecontrol.io/) and resta
 
 ### Prerequisite
 
-[SVGO](https://github.com/svg/svgo) requires Node.js as runtime. If you don't have Node.js, install via followings.
+[SVGO](https://github.com/svg/svgo) requires Node.js as runtime. If you don't have Node.js, I recommend you to install Node.js using version managers like the followings.
 
-- [Download installer](https://nodejs.org/)
 - Use [nodenv/nodenv](https://github.com/nodenv/nodenv)
 - Use [hokaccha/nodebrew](https://github.com/hokaccha/nodebrew)
 
