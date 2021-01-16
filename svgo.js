@@ -18,18 +18,18 @@ function minify(data) {
   };
 
   // Add user plugins
-  for (const plugin of options.plugins) {
+  const plugins = options.plugins || [];
+  const keys = Array.isArray(plugins) ? plugins : Object.keys(plugins);
+  for (const plugin of keys) {
     plugins.push({
-      // TODO: support old node version?
       [plugin]: options.plugins[plugin],
     });
   }
 
   // Set default options
-  for (const option of defaultOptions) {
+  for (const option of Object.keys(defaultOptions)) {
     if (!plugins.find(plugin => option in plugin)) {
       plugins.push({
-        // TODO: support old node version?
         [option]: defaultOptions[option],
       });
     }
