@@ -18,11 +18,9 @@ function minify(data) {
   };
 
   // Add user plugins
-  const plugins = options.plugins || [];
-  const keys = Array.isArray(plugins) ? plugins : Object.keys(plugins);
-  for (const plugin of keys) {
+  for (const plugin of Object.keys(options.plugins || [])) {
     plugins.push({
-      [plugin]: options.plugins[plugin],
+      [plugin]: Boolean(options.plugins[plugin]),
     });
   }
 
