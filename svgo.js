@@ -20,7 +20,7 @@ function minify(data) {
   // Add user plugins
   for (const plugin of Object.keys(options.plugins || [])) {
     plugins.push({
-      [plugin]: Boolean(options.plugins[plugin]),
+      [plugin]: options.plugins[plugin],
     });
   }
 
