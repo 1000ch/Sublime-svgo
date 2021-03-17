@@ -1,7 +1,7 @@
 'use strict';
 
 const getStdin = require('get-stdin');
-const SVGO = require('svgo');
+const { optimize } = require('svgo');
 
 getStdin()
   .then(data => minify(data))
@@ -33,13 +33,11 @@ function minify(data) {
     }
   }
 
-  const svgo = new SVGO({
+  return optimize(svg, {
     js2svg: {
       pretty: options.pretty,
       indent: options.indent
     },
     plugins: plugins,
-  });
-
-  return svgo.optimize(svg).then(r => Buffer.from(r.data));
+  }).then(r => Buffer.from(r.data));
 }
