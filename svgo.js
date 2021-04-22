@@ -14,30 +14,24 @@ function minify(data) {
 
   const defaultOptions = [
     {
-      name: "removeTitle",
-      active: false
+      "name": "removeTitle",
+      "active": false
     },
     {
-      name: "removeViewBox",
-      active: false
+      "name": "removeViewBox",
+      "active": false
     }
   ];
 
   // Add user plugins
   for (const plugin of Object.keys(options.plugins || [])) {
-    plugins.push({
-      name: options.plugins[plugin].name,
-      params: options.plugins[plugin].params
-    });
+    plugins.push(options.plugins[plugin]);
   }
 
   // Set default options
   for (const option of Object.keys(defaultOptions)) {
     if (!plugins.find(plugin => option in plugin)) {
-      plugins.push({
-        name: defaultOptions[option].name,
-        params: defaultOptions[option].params
-      });
+      plugins.push(defaultOptions[option]);
     }
   }
 
