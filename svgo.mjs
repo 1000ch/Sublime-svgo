@@ -1,7 +1,5 @@
-'use strict';
-
-const getStdin = require('get-stdin');
-const { optimize } = require('svgo');
+import getStdin from 'get-stdin';
+import { optimize } from 'svgo';
 
 getStdin()
   .then(data => minify(data))

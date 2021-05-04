@@ -5,7 +5,11 @@
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
-    "get-stdin": "^8.0.0",
+    "get-stdin": "^9.0.0",
     "svgo": "^2.2.2"
+  },
+  "engines": {
+    "node": ">=12.17",
+    "npm": ">=7"
   }
 }
