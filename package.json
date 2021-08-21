@@ -1,15 +1,16 @@
 {
   "version": "4.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
     "get-stdin": "^9.0.0",
-    "svgo": "^2.3.0"
+    "svgo": "^2.4.0"
   },
   "engines": {
-    "node": ">=12.17",
+    "node": ">=12.20",
     "npm": ">=7"
   }
 }
