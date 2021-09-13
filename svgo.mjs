@@ -1,3 +1,4 @@
+import { Buffer } from 'buffer';
 import getStdin from 'get-stdin';
 import { optimize } from 'svgo';
 
@@ -8,27 +9,16 @@ getStdin()
 function minify(data) {
   const options = JSON.parse(process.argv[2]);
   const svg = Buffer.isBuffer(data) ? data.toString() : data;
-  const plugins = [];
-
-  const defaultOptions = {
-    removeTitle: false,
-    removeViewBox: false,
-  };
+  const plugins = [{
+    name: 'preset-default',
+    params: {},
+  }];
 
   // Add user plugins
   for (const plugin of Object.keys(options.plugins || [])) {
     plugins.push({
       [plugin]: options.plugins[plugin],
     });
-  }
-
-  // Set default options
-  for (const option of Object.keys(defaultOptions)) {
-    if (!plugins.find(plugin => option in plugin)) {
-      plugins.push({
-        [option]: defaultOptions[option],
-      });
-    }
   }
 
   return optimize(svg, {
