@@ -1,6 +1,6 @@
-import { Buffer } from 'buffer';
+import {Buffer} from 'buffer';
 import getStdin from 'get-stdin';
-import { optimize } from 'svgo';
+import {optimize} from 'svgo';
 
 getStdin()
   .then(data => minify(data))
