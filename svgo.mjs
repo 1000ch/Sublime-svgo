@@ -27,5 +27,5 @@ function minify(data) {
       indent: options.indent
     },
     plugins: plugins,
-  }).then(r => Buffer.from(r.data));
+  }).data;
 }
