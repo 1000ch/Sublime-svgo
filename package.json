@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "get-stdin": "^9.0.0",
-    "svgo": "^2.7.0"
+    "svgo": "^2.8.0"
   },
   "engines": {
     "node": ">=12.20",
