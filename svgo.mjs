@@ -1,4 +1,4 @@
-import {Buffer} from 'buffer';
+import {Buffer} from 'node:buffer';
 import getStdin from 'get-stdin';
 import {optimize} from 'svgo';
 
