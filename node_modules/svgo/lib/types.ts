@@ -121,7 +121,7 @@ export type StylesheetDeclaration = {
 
 export type StylesheetRule = {
   dynamic: boolean;
-  selectors: string;
+  selector: string;
   specificity: Specificity;
   declarations: Array<StylesheetDeclaration>;
 };
@@ -170,3 +170,5 @@ export type PathDataItem = {
   command: PathDataCommand;
   args: Array<number>;
 };
+
+export type DataUri = 'base64' | 'enc' | 'unenc';
