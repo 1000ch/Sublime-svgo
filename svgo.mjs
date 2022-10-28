@@ -9,10 +9,7 @@ getStdin()
 function minify(data) {
   const options = JSON.parse(process.argv[2]);
   const svg = Buffer.isBuffer(data) ? data.toString() : data;
-  const plugins = [{
-    name: 'preset-default',
-    params: {},
-  }];
+  const plugins = ['preset-default'];
 
   // Add user plugins
   for (const plugin of Object.keys(options.plugins || [])) {
@@ -26,6 +23,6 @@ function minify(data) {
       pretty: options.pretty,
       indent: options.indent
     },
-    plugins: plugins,
+    plugins,
   }).data;
 }
