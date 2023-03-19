@@ -1,0 +1,47 @@
+{
+ "contributions": {
+    "settings": [
+      {
+        "file_patterns": [
+          "/Svgo.sublime-settings"
+        ],
+        "schema": {
+          "properties": {
+            "prefix_id_format": {
+              "type": "string",
+              "markdownDescription": "If set, it used in prefixIds plugin to generate ids",
+              "examples": ["{hash}", "{name}-{hash}"]
+            },
+            "indent": {
+              "type": "number",
+              "markdownDescription": "Indent size used on prettify"
+            },
+            "plugins": {
+              "type": "array",
+              "markdownDescription": "List of SVGO built-in plugins to use",
+              "items": {
+                "oneOf": [{
+                  "type": "string",
+                  "markdownDescription": "Plugin name"
+                }, {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "params": {
+                      "type": "object"
+                    }
+                  },
+                  "additionalProperties": false,
+                }]
+              },
+              "default": ["preset-default"]
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    ]
+  }
+}
