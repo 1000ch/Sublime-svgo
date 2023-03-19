@@ -36,6 +36,18 @@ You can configure following options from Preferences → Package Settings → Sv
 
 Indent size used on prettify.
 
+### plugins
+
+List of SVGO built-in plugins to use (see [SVGO documentation](https://github.com/svg/svgo) for plugin configuration format).
+
+Default: `['default-preset']`
+
+### prefix_id_format
+
+If set, it used in prefixIds plugin to generate ids.
+
+Examples: `"{hash}"`, `"{name}-{hash}"`.
+
 ## License
 
 [MIT](https://1000ch.mit-license.org) © [Shogo Sensui](https://github.com/1000ch)

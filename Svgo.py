@@ -22,39 +22,53 @@ def get_setting(view, key):
 
     return settings.get(key)
 
+def is_svg_selection(view):
+    selected = view.sel()[0]
+    if selected.empty():
+        region = sublime.Region(0, 4)
+    else:
+        region = sublime.Region(selected.begin(), selected.begin() + 4)
+
+    return view.substr(region) == '<svg'
+
+def execute_svgo(view, edit, pretty):
+    selected = view.sel()[0]
+    region = sublime.Region(0, view.size()) if selected.empty() else selected
+    buffer = view.substr(region)
+    filename = view.file_name()
+
+    try:
+        processed = node_bridge(buffer, BIN_PATH, [json.dumps({
+            'pretty': pretty,
+            'path': filename,
+            'prefixIdFormat': get_setting(view, 'prefix_id_format'),
+            'indent': get_setting(view, 'indent'),
+            'plugins': get_setting(view, 'plugins')
+        })])
+    except Exception as e:
+        processed = False
+        sublime.error_message('svgo\n%s' % e)
+
+    if processed:
+        view.replace(edit, region, processed)
+
+
+class SvgoContextMenuCommand(sublime_plugin.TextCommand):
+    def is_visible(self):
+        return is_svg_selection(self.view)
+
+
 class SvgoMinifyCommand(sublime_plugin.TextCommand):
+    def is_visible(self):
+        return is_svg_selection(self.view)
+
     def run(self, edit):
-        region = sublime.Region(0, self.view.size())
-        buffer = self.view.substr(region)
-        processed = self.minify(buffer)
+        execute_svgo(self.view, edit, False)
 
-        if processed:
-            self.view.replace(edit, region, processed)
-
-    def minify(self, data):
-        try:
-            return node_bridge(data, BIN_PATH, [json.dumps({
-                'indent': get_setting(self.view, 'indent'),
-                'plugins': get_setting(self.view, 'plugins')
-            })])
-        except Exception as e:
-            sublime.error_message('svgo\n%s' % e)
 
 class SvgoPrettifyCommand(sublime_plugin.TextCommand):
+    def is_visible(self):
+        return is_svg_selection(self.view)
+
     def run(self, edit):
-        region = sublime.Region(0, self.view.size())
-        buffer = self.view.substr(region)
-        processed = self.prettify(buffer)
-
-        if processed:
-            self.view.replace(edit, region, processed)
-
-    def prettify(self, data):
-        try:
-            return node_bridge(data, BIN_PATH, [json.dumps({
-                'pretty': True,
-                'indent': get_setting(self.view, 'indent'),
-                'plugins': get_setting(self.view, 'plugins')
-            })])
-        except Exception as e:
-            sublime.error_message('svgo\n%s' % e)
+        execute_svgo(self.view, edit, True)
